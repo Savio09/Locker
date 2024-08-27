@@ -1,57 +1,57 @@
 import prisma from "../db";
 
 export const getAllTasks = async (req, res) => {
-  const project = await prisma.projects.findMany({
-    where: {
-      belongsToId: req.user.id,
-      id: req.params.id,
-    },
-    include: {
-      task: true,
-    },
-  });
-  res.json({
-    data: project[0].task,
-  });
+  try {
+    const project = await prisma.projects.findMany({
+      where: {
+        belongsToId: req.user.id,
+        id: req.params.id,
+      },
+      include: {
+        task: true,
+      },
+    });
+    res.json({
+      data: project[0].task,
+    });
+  } catch (error) {
+    res.json({
+      message: error,
+    });
+  }
 };
 
 export const createTask = async (req, res) => {
-  const specificProject = await prisma.projects.findUnique({
-    where: {
-      id: req.params.id,
-      belongsToId: req.user.id,
-    },
-  });
+  try {
+    const specificProject = await prisma.projects.findUnique({
+      where: {
+        id: req.params.id,
+        belongsToId: req.user.id,
+      },
+    });
 
-  console.log(specificProject);
+    console.log(specificProject);
 
-  if (!specificProject) {
-    return res.json({
-      message: "You don't have permission to change this file.",
+    if (!specificProject) {
+      return res.json({
+        message: "You don't have permission to change this file.",
+      });
+    }
+    const task = await prisma.task.create({
+      data: {
+        task: req.body.task,
+        taskId: specificProject.id,
+      },
+    });
+
+    res.json({
+      data: task.task,
+    });
+  } catch (error) {
+    res.json({
+      message: error,
     });
   }
-  const task = await prisma.task.create({
-    data: {
-      task: req.body.task,
-      taskId: specificProject.id,
-    },
-  });
-
-  res.json({
-    data: task.task,
-  });
-  //   try {
-  //     const task = await prisma.task.create({
-  //       data: {
-  //         task: req.body.task,
-  //       },
-  //     });
-  //     res.json({
-  //       data: task,
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
 };
 
 export const deleteTask = async (req, res) => {
