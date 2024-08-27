@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+// some models that i would need to create for the todo-application
+// 1. User
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+id String @id @default(uuid())
+createdAt DateTime @default(now())
+firstname String
+lastname String 
+username String @unique
+password String
+projects Projects[]
+}
+
+model Projects {
+id String @id @default(uuid())
+createdAt DateTime @default(now())
+title String @db.VarChar(255)
+description String?
+belongsToId String
+belongsTo User @relation(fields: [belongsToId], references: [id])
+task Task[] 
+@@unique([id, belongsToId])
+}
+
+model Task {
+id String @id @default(uuid())
+createdAt DateTime @default(now())
+task String
+taskId String
+projectTask Projects @relation(fields: [taskId], references: [id], onDelete: Cascade)
+}
