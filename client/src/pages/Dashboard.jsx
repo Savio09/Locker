@@ -6,6 +6,7 @@ import Spinner from "../components/Spinner";
 import ProjectWrapper from "../components/ProjectWrapper";
 import AddIcon from "../components/AddIcon";
 import { reset } from "../features/auth/authSlice";
+import IntroText from "../components/IntroText";
 function Dashboard() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -68,7 +69,7 @@ function Dashboard() {
 
   return (
     <div>
-      Dashboard
+      <IntroText user={user} projects={projects} />
       {projects && projects.length > 0 ? (
         <div className="projects">
           {projects.map((project, index) => (

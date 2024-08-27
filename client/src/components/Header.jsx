@@ -3,6 +3,7 @@ import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 import { toast } from "react-toastify";
+import UserIcon from "./UserIcon";
 
 function Header() {
   const navigate = useNavigate();
@@ -19,15 +20,27 @@ function Header() {
   return (
     <header className="header">
       <div className="logo">
-        <Link to="/">Locker.</Link>
+        <Link to="/">
+          <h1>
+            Lockd<b style={{ color: "#66bb6a" }}>.</b>
+          </h1>
+        </Link>
       </div>
       <ul>
         {user ? (
-          <li>
-            <button className="btn" onClick={onLogout}>
-              <FaSignOutAlt /> Logout
-            </button>
-          </li>
+          <>
+            <li>
+              <Link to="/dashboard">Dashboard</Link>
+            </li>
+            <li>
+              <UserIcon user={user} />
+            </li>
+            <li>
+              <button className="btn" onClick={onLogout}>
+                <FaSignOutAlt /> Logout
+              </button>
+            </li>
+          </>
         ) : (
           <>
             <li>

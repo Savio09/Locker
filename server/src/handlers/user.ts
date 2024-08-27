@@ -59,6 +59,8 @@ export const signin = async (req, res) => {
   res.json({
     id: user.id,
     username: user.username,
+    lastname: user.lastname,
+    firstname: user.firstname,
     token,
   });
 };

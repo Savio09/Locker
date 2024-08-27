@@ -25,10 +25,10 @@ function Login() {
       toast.error(message);
     }
     if (user) {
-      navigate("/");
+      navigate("/dashboard");
     }
     if (isSuccess && user) {
-      navigate("/");
+      navigate("/dashboard");
       toast.success("Login Successful");
     }
     dispatch(reset());
