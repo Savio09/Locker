@@ -12,7 +12,7 @@ export const createNewUser = async (req, res, next) => {
 
     if (isExisting) {
       res.status(400).json({
-        error: "Username already taken",
+        message: "Username already taken",
       });
       return;
     }

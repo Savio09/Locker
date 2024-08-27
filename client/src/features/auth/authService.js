@@ -3,10 +3,6 @@ const API_URL = "https://locka-cb5820800811.herokuapp.com/user/";
 
 const register = async (userData) => {
   const response = await axios.post(API_URL + "signup", userData);
-  // if (response.data) {
-  //   localStorage.setItem("user", JSON.stringify(response.data.token));
-  // }
-  console.log(response);
   return response.data;
 };
 
