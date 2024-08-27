@@ -44,7 +44,7 @@ function LandingPage() {
         </button>
       </div>
       <div className="hero-img">
-        <img src={hero} alt="an image of the application's UI" />
+        <img src={hero} alt="the application's UI" />
       </div>
       <div className="hero-text">
         <div className="item-1">
