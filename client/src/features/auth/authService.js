@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "/user/";
+const API_URL = "https://locka-cb5820800811.herokuapp.com/user/";
 
 const register = async (userData) => {
   try {

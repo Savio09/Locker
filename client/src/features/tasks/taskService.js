@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "/api/tasks/";
+const API_URL = "https://locka-cb5820800811.herokuapp.com/api/tasks/";
 
 const fetchTasks = async (token, id) => {
   const config = {
