@@ -248,7 +248,7 @@ function LandingPage() {
             ❤️
           </p>
           <p>
-            Design from dribble{" "}
+            Design from dribble by{" "}
             <Link
               to="https://dribbble.com/shots/21236436-To-Do-List-Mobile-App-Design"
               style={{ textDecoration: "underline" }}
