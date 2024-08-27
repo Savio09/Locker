@@ -3,7 +3,7 @@ import TodoItem from "../components/TodoItem";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { getProjectById } from "../features/projects/projectSlice";
-import { Modal, Box, Typography } from "@mui/material";
+import { Modal, Box } from "@mui/material";
 import TaskForm from "../components/TaskForm";
 import { deleteTask, getTasks } from "../features/tasks/taskSlice";
 
@@ -14,7 +14,7 @@ function Taskpage() {
   const location = useLocation();
 
   const { projects } = useSelector((state) => state.projects);
-  let { tasks, isLoading } = useSelector((state) => state.tasks);
+  let { tasks } = useSelector((state) => state.tasks);
 
   const [open, setOpen] = useState(false);
 

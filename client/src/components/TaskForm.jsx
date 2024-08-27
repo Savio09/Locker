@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import Spinner from "./Spinner";
 
 function TaskForm({ id, handleClose }) {
-  const { tasks, isLoading } = useSelector((state) => state.tasks);
+  const { isLoading } = useSelector((state) => state.tasks);
   const [task, setTask] = useState("");
   const dispatch = useDispatch();
 
