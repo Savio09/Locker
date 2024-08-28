@@ -27,7 +27,7 @@ function Projectform() {
     }
     const data = { title, description };
     dispatch(createProject(data));
-    navigate("/");
+    navigate("/dashboard");
   };
   return (
     <>

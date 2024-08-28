@@ -50,7 +50,7 @@ function UpdateForm() {
     e.preventDefault();
     const data = { id, title, description };
     dispatch(updateProject(data));
-    navigate("/");
+    navigate("/dashboard");
   };
 
   return (
